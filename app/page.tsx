@@ -1,14 +1,40 @@
 "use client";
 
 import OpenInvitation from "@/components/OpenInvitation";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import MainInvitation from "@/components/MainInvitation";
 import { AnimatePresence, motion } from "framer-motion";
 
+const COUNTDOWN_TARGET_DATE = "2025-12-21T18:00:00";
+
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const targetDate = new Date(COUNTDOWN_TARGET_DATE);
+      const now = new Date();
+      const difference = targetDate.getTime() - now.getTime();
+
+      const timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+      setTimeLeft(timeLeft);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
   const playMusic = async () => {
     if (audioRef.current) {
       try {
@@ -68,7 +94,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <MainInvitation />
+            <MainInvitation timeLeft={timeLeft} />
           </motion.div>
         ) : (
           <motion.div

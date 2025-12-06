@@ -80,7 +80,7 @@
 }
 
 body {
-  font-family: var(--font-playfair-display), sans-serif;
+  font-family: var(--font-playfair-display), serif;
 }
 .font-script {
   font-family: var(--font-great-vibes), cursive;

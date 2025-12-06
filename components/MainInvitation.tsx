@@ -1,20 +1,41 @@
-import Image from "next/image";
-export default function MainInvitation() {
-  return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Background decoration elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-secondary rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-10 right-10 w-64 h-64 bg-secondary rounded-full blur-[100px]"></div>
-      </div>
+"use client";
+import { Mail, MapPin, Shirt, Calendar } from "lucide-react";
 
-      <Image
-        src="/images/elegant_purple_bg.jpg"
-        alt="Background"
-        fill
-        priority
-        className="object-cover opacity-5"
-      />
+import Hero from "./invitation/Hero";
+import TimeAndPlace from "./invitation/TimeAndPlace";
+import Event from "./invitation/Event";
+import Message from "./invitation/Message";
+import Rsvp from "./invitation/Rsvp";
+
+const MainInvitation = ({
+  timeLeft,
+}: {
+  timeLeft: { days: number; hours: number; minutes: number; seconds: number };
+}) => {
+  const menuItems = [
+    {
+      name: "Time & Place",
+      href: "#time-place",
+      icon: <MapPin className="w-4 h-4" />,
+    },
+    {
+      name: "The Event",
+      href: "#event",
+      icon: <Shirt className="w-4 h-4" />,
+    },
+    { name: "Message", href: "#message", icon: <Mail className="w-4 h-4" /> },
+    { name: "RSVP", href: "#rsvp", icon: <Calendar className="w-4 h-4" /> },
+  ];
+
+  return (
+    <div className="font-sans bg-gray-900 text-white">
+      <Hero timeLeft={timeLeft} menuItems={menuItems} />
+      <TimeAndPlace />
+      <Event />
+      <Message />
+      <Rsvp />
     </div>
   );
-}
+};
+
+export default MainInvitation;
