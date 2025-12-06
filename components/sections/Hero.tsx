@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import GoldenButton from "../ui/golden_button";
 
 interface TimeLeft {
   days: number;
@@ -58,6 +59,9 @@ const Hero = ({ timeLeft, menuItems }: HeroProps) => {
             </div>
           ))}
         </div>
+        <a href="#rsvp" className="flex justify-center mt-6">
+          <GoldenButton> RSVP Now</GoldenButton>
+        </a>
 
         {/* Menu Bar */}
         <nav className="mt-12 ">
