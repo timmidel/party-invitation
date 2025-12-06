@@ -2,6 +2,7 @@
 import { MailOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import GoldenButton from "./ui/golden_button";
 
 interface OpenInvitationProps {
   onOpen: () => void;
@@ -54,15 +55,10 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
           Tracey Faye Abellon
         </h2>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={onOpen}
-          className="mt-2 md:mt-4 px-6 py-2.5 md:px-8 md:py-3 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 text-white rounded-full flex items-center gap-2 md:gap-3 font-bold text-base md:text-lg shadow-[0_0_20px_rgba(232,165,25,0.4),0_8px_24px_rgba(0,0,0,0.2)] hover:shadow-[0_0_35px_rgba(232,165,25,0.6),0_12px_32px_rgba(0,0,0,0.3)] transition-all duration-300 cursor-pointer"
-        >
+        <GoldenButton onClick={onOpen} className="mt-4 md:mt-6">
           <MailOpen className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-          <span className="text-primary font-playfair">Open Invitation</span>
-        </motion.button>
+          Open Invitation
+        </GoldenButton>
       </motion.div>
     </div>
   );

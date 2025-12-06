@@ -1,11 +1,11 @@
 "use client";
 import { Mail, MapPin, Shirt, Calendar } from "lucide-react";
 
-import Hero from "./invitation/Hero";
-import TimeAndPlace from "./invitation/TimeAndPlace";
-import Event from "./invitation/Event";
-import Message from "./invitation/Message";
-import Rsvp from "./invitation/Rsvp";
+import Hero from "./sections/Hero";
+import TimeAndPlace from "./sections/TimeAndPlace";
+import Event from "./sections/Event";
+import Message from "./sections/Message";
+import Rsvp from "./sections/Rsvp";
 
 const MainInvitation = ({
   timeLeft,
@@ -30,10 +30,12 @@ const MainInvitation = ({
   return (
     <div className="font-sans bg-gray-900 text-white">
       <Hero timeLeft={timeLeft} menuItems={menuItems} />
-      <TimeAndPlace />
-      <Event />
-      <Message />
-      <Rsvp />
+      <div className="relative">
+        <TimeAndPlace />
+        <Event />
+        <Message />
+        <Rsvp />
+      </div>
     </div>
   );
 };

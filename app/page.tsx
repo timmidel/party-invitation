@@ -39,8 +39,7 @@ export default function Home() {
     if (audioRef.current) {
       try {
         audioRef.current.volume = 0.5;
-        await audioRef.current.play();
-        console.log("Audio playing successfully");
+        // await audioRef.current.play();
       } catch (error) {
         console.error("Audio playback failed:", error);
       }
