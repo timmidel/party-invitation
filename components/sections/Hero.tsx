@@ -37,7 +37,7 @@ const Hero = ({ timeLeft, menuItems }: HeroProps) => {
       </div>
       <div className="relative z-10">
         <h1 className="font-script leading-[1.3] text-5xl md:text-7xl lg:text-8xl bg-linear-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(232,165,25,0.5)]">
-          Tracey Faye Abellon
+          Tracey Faye Abellon&apos;s
         </h1>
         <h2 className="font-script leading-[1.3] text-4xl md:text-6xl lg:text-7xl bg-linear-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent tracking-wide drop-shadow-[0_2px_8px_rgba(232,165,25,0.4)] mt-4">
           Victory Party
@@ -64,7 +64,7 @@ const Hero = ({ timeLeft, menuItems }: HeroProps) => {
         </a>
 
         {/* Menu Bar */}
-        <nav className="mt-12 ">
+        <nav className="mt-12 text-amber-100">
           <ul className="flex flex-wrap justify-center gap-4">
             {menuItems.map((item) => (
               <li key={item.name}>

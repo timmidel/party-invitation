@@ -1,11 +1,12 @@
 "use client";
-import { Mail, MapPin, Shirt, Calendar } from "lucide-react";
+import { Mail, MapPin, Calendar, PartyPopper } from "lucide-react";
 
 import Hero from "./sections/Hero";
 import TimeAndPlace from "./sections/TimeAndPlace";
 import Event from "./sections/Event";
 import Message from "./sections/Message";
 import Rsvp from "./sections/Rsvp";
+import Footer from "./sections/Footer";
 
 const MainInvitation = ({
   timeLeft,
@@ -21,7 +22,7 @@ const MainInvitation = ({
     {
       name: "The Event",
       href: "#event",
-      icon: <Shirt className="w-4 h-4" />,
+      icon: <PartyPopper className="w-4 h-4" />,
     },
     { name: "Message", href: "#message", icon: <Mail className="w-4 h-4" /> },
     { name: "RSVP", href: "#rsvp", icon: <Calendar className="w-4 h-4" /> },
@@ -35,6 +36,7 @@ const MainInvitation = ({
         <Event />
         <Message />
         <Rsvp />
+        <Footer />
       </div>
     </div>
   );
