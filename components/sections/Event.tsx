@@ -15,25 +15,27 @@ const Event = () => {
 
           {/* Why Celebrate Column */}
           <FadeUp delay={0.2}>
-            <p className="text-xl md:text-2xl text-amber-100 leading-relaxed mb-8 text-center top-40">
-              After months of dedication, hard work, and unwavering
-              determination,
+            <p className="text-lg sm:text-xl md:text-xl text-amber-100 leading-relaxed mb-8 text-center top-40">
+              After years of dedication, hard work, and unwavering determination
+              as a student,
               <span className="font-bold text-secondary">
                 {" "}
                 Tracey Faye Abellon{" "}
               </span>
-              has achieved an incredible milestone worth celebrating.
+              has achieved an incredible milestone worth celebrating—being a
+              passer and the Top 3 of the Philippine Nurse Licensure Examination
+              (PNLE).
             </p>
 
-            <p className="text-xl md:text-2xl text-amber-100 leading-relaxed text-center mb-10">
+            <p className="text-lg sm:text-xl md:text-xl text-amber-100 leading-relaxed text-center mb-10">
               This victory party is a testament to perseverance, courage, and
-              the power of believing in yourself. Join us as we honor this
-              remarkable achievement!
+              the power of believing in yourself, but most especially, in
+              God&apos;s plans. Join us as we honor this remarkable achievement!
             </p>
 
             <div className="border-t border-amber-500/30 pt-8">
               <p className="text-xl text-secondary italic text-center">
-                &quot;Believe that you can and you&apos;re halfway there&quot;
+                &quot;Believe that you can and you&apos;re halfway there.&quot;
               </p>
             </div>
           </FadeUp>
@@ -42,9 +44,7 @@ const Event = () => {
             className="-top-40 left-0 md:-top-20 md:left-60"
             fill="#e8a519"
           />
-          <FadeUp delay={0.4} className="mt-40">
-            <Album />
-          </FadeUp>
+          <Album />
         </div>
       </DraggableCardContainer>
     </section>

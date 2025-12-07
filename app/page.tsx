@@ -6,7 +6,7 @@ import confetti from "canvas-confetti";
 import MainInvitation from "@/components/MainInvitation";
 import { AnimatePresence, motion } from "framer-motion";
 
-const COUNTDOWN_TARGET_DATE = "2025-12-21T18:00:00";
+const COUNTDOWN_TARGET_DATE = "2025-12-21T17:00:00";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,7 @@ export default function Home() {
     if (audioRef.current) {
       try {
         audioRef.current.volume = 0.5;
-        await audioRef.current.play();
+        // await audioRef.current.play();
       } catch (error) {
         console.error("Audio playback failed:", error);
       }

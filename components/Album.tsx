@@ -1,48 +1,57 @@
 import { DraggableCardBody } from "@/components/ui/draggable-card";
+import FadeUp from "./ui/fade_up";
 
 export function Album() {
   const items = [
     {
-      title: "Tyler Durden",
-      image:
-        "https://images.unsplash.com/photo-1732310216648-603c0255c000?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      className: "absolute left-[31%] top-10 rotate-[-5deg]",
+      title: "Senior High Graduation",
+      image: "images/portrait10.jpg",
+      className: "absolute left-[33%] top-32 rotate-[3deg]",
     },
     {
-      title: "The Narrator",
-      image:
-        "https://images.unsplash.com/photo-1697909623564-3dae17f6c20b?q=80&w=2667&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      className: "absolute top-18 left-[29%] rotate-[-7deg]",
+      title: "Pin & Ring Ceremony",
+      image: "images/portrait9.jpg",
+      className: "absolute left-[48%] top-15 rotate-[3deg]",
     },
     {
-      title: "Iceland",
-      image:
-        "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=2600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      className: "absolute top-27 left-[40%] rotate-[8deg]",
+      title: "Junior High Completion",
+      image: "images/portrait8.jpg",
+      className: "absolute left-[44%] top-12 rotate-[-2deg]",
     },
     {
-      title: "Japan",
-      image:
-        "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=3648&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      className: "absolute top-15 left-[45%] rotate-[10deg]",
+      title: "Prep School Recognition Day",
+      image: "images/portrait7.jpg",
+      className: "absolute left-[36%] top-10 rotate-[-5deg]",
     },
     {
-      title: "Norway",
-      image:
-        "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      className: "absolute top-25 right-[35%] rotate-[2deg]",
+      title: "Prep School Graduation",
+      image: "images/portrait6.jpg",
+      className: "absolute top-18 left-[33%] rotate-[-8deg]",
     },
     {
-      title: "New Zealand",
-      image:
-        "https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=3070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      className: "absolute top-13 left-[41%] rotate-[-7deg]",
+      title: "Grade School Graduation",
+      image: "images/portrait5.jpg",
+      className: "absolute top-27 left-[45%] rotate-[8deg]",
     },
     {
-      title: "Canada",
-      image:
-        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      className: "absolute top-11 left-[32%] rotate-[4deg]",
+      title: "AMDG Awards",
+      image: "images/portrait4.jpg",
+      className: "absolute top-15 left-[50%] rotate-[10deg]",
+    },
+    {
+      title: "College Graduation",
+      image: "images/portrait3.jpg",
+      className: "absolute top-25 right-[40%] rotate-[2deg]",
+    },
+    {
+      title: "Student Nurse",
+      image: "images/portrait2.jpg",
+      className: "absolute top-13 left-[46%] rotate-[-7deg]",
+    },
+    {
+      title: "PNLE 2025 Passer and Top 3",
+      image: "images/portrait1.jpg",
+      className: "absolute top-11 left-[37%] rotate-[4deg]",
     },
   ];
   return (
@@ -59,9 +68,9 @@ export function Album() {
             <img
               src={item.image}
               alt={item.title}
-              className="pointer-events-none relative z-10 h-70 w-70 object-cover rounded"
+              className="pointer-events-none relative z-10 h-60 w-50 md:h-80 md:w-70 sm:w-70 sm:w-60 object-cover rounded"
             />
-            <h3 className="mt-4 text-center text-2xl font-bold font-script text-primary">
+            <h3 className="mt-4 text-center text-md font-bold font-playfair text-primary">
               {item.title}
             </h3>
           </div>

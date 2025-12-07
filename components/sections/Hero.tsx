@@ -32,7 +32,7 @@ const Hero = ({ timeLeft, menuItems }: HeroProps) => {
           alt="Background"
           fill
           priority
-          className="object-cover opacity-15"
+          className="object-cover opacity-17"
         />
       </div>
       <div className="relative z-10">
@@ -64,13 +64,34 @@ const Hero = ({ timeLeft, menuItems }: HeroProps) => {
         </a>
 
         {/* Menu Bar */}
-        <nav className="mt-12 text-amber-100">
-          <ul className="flex flex-wrap justify-center gap-4">
+        <nav className="mt-12 text-amber-100 w-full flex justify-center">
+          <ul
+            className="
+      grid 
+      grid-cols-2 
+      sm:flex 
+      sm:flex-wrap 
+      justify-center 
+      gap-3 
+      sm:gap-4 
+      w-full 
+      max-w-xl
+    "
+          >
             {menuItems.map((item) => (
-              <li key={item.name}>
+              <li key={item.name} className="flex justify-center">
                 <a
                   href={item.href}
-                  className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                  className="
+            flex items-center gap-2 
+            px-4 py-2 
+            bg-white/10 
+            rounded-full 
+            hover:bg-white/20 
+            transition-colors 
+            text-sm 
+            sm:text-base
+          "
                 >
                   {item.icon}
                   {item.name}

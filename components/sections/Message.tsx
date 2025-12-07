@@ -4,6 +4,7 @@ import SectionHeading from "../ui/section_heading";
 import GoldenButton from "../ui/golden_button";
 import { Send } from "lucide-react";
 import { Toast, useToast } from "../Toast";
+import { ShootingStars } from "../ui/shadcn-io/shooting-stars";
 
 const Message = () => {
   const { toast, showToast, hideToast } = useToast();
@@ -51,8 +52,12 @@ const Message = () => {
       <Toast {...toast} onClose={hideToast} />
       <section
         id="message"
-        className="py-20 px-6 bg-[#1a0f2ec7]/85 font-playfair"
+        className="py-20 px-6 bg-[#1a0f2ec7]/85 font-playfair relative"
       >
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-13">
+          <div className="absolute top-0 left-0 w-72 h-72 bg-indigo-400 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-0 right-0 w-72 h-72 bg-orange-500 rounded-full blur-[110px]"></div>
+        </div>
         <div className="max-w-4xl mx-auto text-center">
           <FadeUp>
             <SectionHeading>Send a Message</SectionHeading>

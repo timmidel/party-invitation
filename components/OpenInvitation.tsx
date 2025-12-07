@@ -22,7 +22,7 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
         alt="Background"
         fill
         priority
-        className="object-cover opacity-5"
+        className="object-cover opacity-15"
       />
 
       <motion.div
@@ -41,11 +41,11 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
 
           <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border-4 md:border-[6px] border-transparent bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 p-1 overflow-hidden shadow-[0_8px_32px_rgba(232,165,25,0.35)] group-hover:shadow-[0_12px_48px_rgba(232,165,25,0.5)]">
             {/* Inner white border for cleaner look */}
-            <div className="w-full h-full rounded-full overflow-hidden bg-whit">
+            <div className="w-full h-full rounded-full overflow-hidden">
               <img
-                src="https://picsum.photos/600/600?grayscale"
+                src="images/main_portrait.jpg"
                 alt="Tracey portrait"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover opacity-90 object-top"
               />
             </div>
           </div>
