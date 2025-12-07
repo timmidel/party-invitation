@@ -52,7 +52,7 @@ export function Album() {
           key={index}
           className={
             item.className +
-            " bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 p-4 rounded-lg shadow-[0_0_20px_rgba(232,165,25,0.4)] top-180 sm:top-140"
+            " no-confetti bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 p-4 rounded-lg shadow-[0_0_20px_rgba(232,165,25,0.4)] top-180 sm:top-140"
           }
         >
           <div>

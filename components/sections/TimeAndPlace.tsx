@@ -44,14 +44,14 @@ const TimeAndPlace = () => {
             {/* Time Column */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-amber-500/20 hover:border-amber-500/40 transition-all flex flex-col">
               <div className="mb-6">
-                <Calendar className="w-12 h-12 mx-auto mb-4 text-amber-400" />
-                <h3 className="text-2xl font-bold text-amber-300 mb-6">When</h3>
+                <Calendar className="w-12 h-12 mx-auto mb-4 text-secondary" />
+                <h3 className="text-2xl font-bold text-secondary mb-4">When</h3>
               </div>
 
               <div className="space-y-3 text-amber-100 grow">
-                <p className="text-2xl font-bold text-amber-200">Sunday</p>
-                <p className="text-4xl font-bold text-amber-300">December 21</p>
-                <p className="text-xl mt-4 text-amber-100">5:00 PM onwards</p>
+                <p className="text-2xl font-bold text-amber-100">Sunday</p>
+                <p className="text-4xl font-bold text-secondary">December 21</p>
+                <p className="text-2xl mt-4 text-amber-100">5:00 PM onwards</p>
               </div>
 
               <GoldenButton
@@ -66,23 +66,21 @@ const TimeAndPlace = () => {
             {/* Place Column */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-amber-500/20 hover:border-amber-500/40 transition-all flex flex-col">
               <div className="mb-6">
-                <MapPin className="w-12 h-12 mx-auto mb-4 text-amber-400" />
-                <h3 className="text-2xl font-bold text-amber-300 mb-6">
+                <MapPin className="w-12 h-12 mx-auto mb-4 text-secondary" />
+                <h3 className="text-2xl font-bold text-secondary mb-4">
                   Where
                 </h3>
               </div>
 
               <div className="space-y-3 text-amber-100 flex-grow">
-                <p className="text-2xl font-bold text-amber-200">
+                <p className="text-2xl font-bold text-amber-100">
                   Grand Astoria Hotel
                 </p>
-                <p className="text-lg text-amber-100">
-                  Victory Hotel & Convention Center
-                </p>
-                <p className="text-base text-amber-100/80 mt-4">
+                <p className="text-lg text-amber-100">Sapphire Hall</p>
+                <p className="text-base text-amber-100 mt-4">
                   466 Mayor Jaldon Street
                 </p>
-                <p className="text-base text-amber-100/80">
+                <p className="text-base text-amber-100">
                   Zamboanga City, Philippines
                 </p>
               </div>

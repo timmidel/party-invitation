@@ -85,9 +85,8 @@ const Message = () => {
             {/* Submit Button */}
             <div className="flex justify-center pt-4">
               <GoldenButton className="mx-auto">
-                <Heart className="w-5 h-5 text-primary" />
-                Send Message
                 <Send className="w-5 h-5 text-primary" />
+                Send Message
               </GoldenButton>
             </div>
           </form>

@@ -39,7 +39,7 @@ export default function Home() {
     if (audioRef.current) {
       try {
         audioRef.current.volume = 0.5;
-        await audioRef.current.play();
+        // await audioRef.current.play();
       } catch (error) {
         console.error("Audio playback failed:", error);
       }
@@ -57,8 +57,8 @@ export default function Home() {
   const shootStars = () => {
     const defaults = {
       spread: 400,
-      ticks: 200,
-      gravity: 0,
+      ticks: 300,
+      gravity: 0.1,
       decay: 0.94,
       startVelocity: 30,
       colors: ["#FFE400", "#FFBD00", "#E89400", "#FFCA6C", "#FDFFB8"],
@@ -66,13 +66,13 @@ export default function Home() {
     const shoot = () => {
       confetti({
         ...defaults,
-        particleCount: 40,
+        particleCount: 50,
         scalar: 1.2,
         shapes: ["star"],
       });
       confetti({
         ...defaults,
-        particleCount: 10,
+        particleCount: 20,
         scalar: 0.75,
         shapes: ["circle"],
       });

@@ -5,7 +5,6 @@ import {
   Great_Vibes,
   Playfair_Display,
 } from "next/font/google";
-
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} ${playfairDisplay.variable} antialiased`}
       >

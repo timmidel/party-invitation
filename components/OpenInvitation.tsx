@@ -32,7 +32,7 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
         className="z-10 flex flex-col items-center text-center space-y-4 md:space-y-6 px-6 py-8 max-w-full w-full"
       >
         <h1 className="font-script leading-[1.3] text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent tracking-wide drop-shadow-[0_2px_8px_rgba(232,165,25,0.4)] w-full h-full">
-          Victory Party Of
+          A Victory Worth Celebrating
         </h1>
 
         <motion.div whileHover={{ scale: 1.05 }} className="relative group">
@@ -52,7 +52,7 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
         </motion.div>
 
         <h2 className="font-script leading-[1.3] text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(232,165,25,0.5)] w-full px-2">
-          Tracey Faye Abellon
+          Tracey Faye Abellon, RN
         </h2>
 
         <GoldenButton onClick={onOpen} className="mt-4 md:mt-6">

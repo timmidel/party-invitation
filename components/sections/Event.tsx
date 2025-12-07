@@ -25,14 +25,14 @@ const Event = () => {
               has achieved an incredible milestone worth celebrating.
             </p>
 
-            <p className="text-lg md:text-xl text-amber-200/80 leading-relaxed text-center mb-10">
+            <p className="text-xl md:text-2xl text-amber-100 leading-relaxed text-center mb-10">
               This victory party is a testament to perseverance, courage, and
               the power of believing in yourself. Join us as we honor this
               remarkable achievement!
             </p>
 
             <div className="border-t border-amber-500/30 pt-8">
-              <p className="text-3xl font-script text-amber-300 italic text-center">
+              <p className="text-xl text-secondary italic text-center">
                 &quot;Believe that you can and you&apos;re halfway there&quot;
               </p>
             </div>

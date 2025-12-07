@@ -7,6 +7,7 @@ import Event from "./sections/Event";
 import Message from "./sections/Message";
 import Rsvp from "./sections/Rsvp";
 import Footer from "./sections/Footer";
+import { ConfettiWrapper } from "./ConfettiWrapper";
 
 const MainInvitation = ({
   timeLeft,
@@ -29,16 +30,18 @@ const MainInvitation = ({
   ];
 
   return (
-    <div className="font-sans bg-gray-900 text-white">
-      <Hero timeLeft={timeLeft} menuItems={menuItems} />
-      <div className="relative">
-        <TimeAndPlace />
-        <Event />
-        <Message />
-        <Rsvp />
-        <Footer />
+    <ConfettiWrapper>
+      <div className="font-sans bg-gray-900 text-white">
+        <Hero timeLeft={timeLeft} menuItems={menuItems} />
+        <div className="relative">
+          <TimeAndPlace />
+          <Event />
+          <Message />
+          <Rsvp />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </ConfettiWrapper>
   );
 };
 
