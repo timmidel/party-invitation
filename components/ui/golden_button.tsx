@@ -7,6 +7,7 @@ interface GoldenButtonProps {
   className?: string;
   isLoading?: boolean;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 }
 
 const GoldenButton = ({
@@ -15,6 +16,7 @@ const GoldenButton = ({
   className = "",
   isLoading = false,
   disabled = false,
+  type = "button",
 }: GoldenButtonProps) => {
   return (
     <motion.button
@@ -27,6 +29,7 @@ const GoldenButton = ({
           ? "opacity-50 cursor-not-allowed"
           : "hover:shadow-[0_0_25px_rgba(232,165,25,0.6),0_12px_28px_rgba(0,0,0,0.3)]"
       } ${className}`}
+      type={type}
     >
       {isLoading ? (
         <>
