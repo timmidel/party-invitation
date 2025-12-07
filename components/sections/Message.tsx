@@ -12,9 +12,11 @@ const Message = () => {
     name: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await fetch("/api/messages", {
@@ -35,6 +37,8 @@ const Message = () => {
       // Handle error
       showToast("Something went wrong. Please try again.", "error");
       console.error("Error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -83,6 +87,7 @@ const Message = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  disabled={isLoading}
                   placeholder="Enter your name/codename"
                   className="w-full px-6 py-4 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 placeholder-amber-100/40 focus:outline-none focus:border-amber-500/60 focus:bg-white/15 transition-all duration-300 text-lg backdrop-blur-sm"
                 />
@@ -103,6 +108,7 @@ const Message = () => {
                   onChange={handleChange}
                   required
                   rows={6}
+                  disabled={isLoading}
                   placeholder="Write your heartfelt message here..."
                   className="w-full px-6 py-4 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 placeholder-amber-100/40 focus:outline-none focus:border-amber-500/60 focus:bg-white/15 transition-all duration-300 text-lg resize-none backdrop-blur-sm"
                 />
@@ -110,7 +116,7 @@ const Message = () => {
 
               {/* Submit Button */}
               <div className="flex justify-center pt-4">
-                <GoldenButton className="mx-auto">
+                <GoldenButton className="mx-auto" isLoading={isLoading}>
                   <Send className="w-5 h-5 text-primary" />
                   Send Message
                 </GoldenButton>

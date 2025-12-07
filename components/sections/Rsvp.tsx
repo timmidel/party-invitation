@@ -8,10 +8,12 @@ import { Toast, useToast } from "../Toast";
 const Rsvp = () => {
   const [attendance, setAttendance] = useState("yes");
   const [guests, setGuests] = useState([""]);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast, showToast, hideToast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await fetch("/api/rsvp", {
@@ -32,6 +34,8 @@ const Rsvp = () => {
       // Handle error
       console.error("Error:", error);
       showToast("Something went wrong. Please try again.", "error");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -82,6 +86,7 @@ const Rsvp = () => {
                       checked={attendance === "yes"}
                       onChange={(e) => setAttendance(e.target.value)}
                       className="hidden peer"
+                      disabled={isLoading}
                     />
                     <div className="no-confetti px-4 py-3 md:px-6 md:py-4 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 text-center font-semibold transition-all duration-300 peer-checked:bg-gradient-to-r peer-checked:from-yellow-400 peer-checked:via-amber-500 peer-checked:to-yellow-600 peer-checked:text-primary peer-checked:border-amber-500 peer-checked:shadow-[0_0_20px_rgba(232,165,25,0.5)] text-sm md:text-base">
                       ✓ Yes, I&apos;ll be there!
@@ -95,6 +100,7 @@ const Rsvp = () => {
                       checked={attendance === "no"}
                       onChange={(e) => setAttendance(e.target.value)}
                       className="hidden peer"
+                      disabled={isLoading}
                     />
                     <div className="no-confetti px-4 py-3 md:px-6 md:py-4 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 text-center font-semibold transition-all duration-300 peer-checked:bg-white/20 peer-checked:border-amber-500/60 text-sm md:text-base">
                       ✗ Sorry, can&apos;t make it
@@ -116,6 +122,7 @@ const Rsvp = () => {
                         value={guest}
                         onChange={(e) => updateGuestName(index, e.target.value)}
                         required
+                        disabled={isLoading}
                         placeholder={
                           attendance === "yes"
                             ? `Guest ${index + 1} name`
@@ -127,6 +134,7 @@ const Rsvp = () => {
                         <button
                           type="button"
                           onClick={() => removeGuestField(index)}
+                          disabled={isLoading}
                           className="px-3 py-3 md:px-4 md:py-4 bg-red-500/20 border-2 border-red-500/40 rounded-2xl text-red-300 hover:bg-red-500/30 hover:border-red-500/60 transition-all duration-300 cursor-pointer flex-shrink-0"
                         >
                           <X className="w-4 h-4 md:w-5 md:h-5" />
@@ -140,6 +148,7 @@ const Rsvp = () => {
                   <button
                     type="button"
                     onClick={addGuestField}
+                    disabled={isLoading}
                     className="mt-4 px-4 py-2.5 md:px-6 md:py-3 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 hover:bg-white/15 hover:border-amber-500/60 transition-all duration-300 flex items-center gap-2 mx-auto font-semibold cursor-pointer text-sm md:text-base"
                   >
                     <Plus className="w-4 h-4 md:w-5 md:h-5" />
@@ -150,7 +159,10 @@ const Rsvp = () => {
 
               {/* Submit Button */}
               <div className="flex justify-center pt-4">
-                <GoldenButton className="mx-auto sm:w-auto">
+                <GoldenButton
+                  className="mx-auto sm:w-auto"
+                  isLoading={isLoading}
+                >
                   Confirm RSVP
                 </GoldenButton>
               </div>
