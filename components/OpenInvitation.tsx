@@ -50,13 +50,13 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
             </div>
           </div>
         </motion.div>
-        <GoldenButton onClick={onOpen} className="mt-4 md:mt-6 ">
+        <h2 className="font-script leading-[1.3] text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(232,165,25,0.5)] w-full px-2">
+          Tracey Faye Abellon, RN
+        </h2>
+        <GoldenButton onClick={onOpen} className="mt-2 md:mt-4 ">
           <MailOpen className="w-4 h-4 md:w-5 md:h-5 text-primary" />
           Open Invitation
         </GoldenButton>
-        <h2 className=" shrink-h-xxs font-script leading-[1.3] text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(232,165,25,0.5)] w-full px-2">
-          Tracey Faye Abellon, RN
-        </h2>
       </motion.div>
     </div>
   );

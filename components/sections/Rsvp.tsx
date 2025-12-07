@@ -67,8 +67,12 @@ const Rsvp = () => {
         <div className="max-w-4xl mx-auto text-center font-playfair">
           <FadeUp>
             <SectionHeading>RSVP</SectionHeading>
-            <p className="text-base md:text-lg text-amber-100 mt-4 mb-8 md:mb-12 px-2">
+            <p className="text-base md:text-lg text-amber-100 mt-4 px-2">
               Let us know if you can join the celebration!
+            </p>
+            <p className="text-base italic md:text-lg text-amber-100/80 mt-4 mb-8 md:mb-12 px-2">
+              Note: Please RSVP for yourself and any other guests, even if you
+              are not able to attend.
             </p>
           </FadeUp>
 
