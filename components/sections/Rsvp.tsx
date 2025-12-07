@@ -25,7 +25,9 @@ const Rsvp = () => {
       const result = await response.json();
 
       if (result.success) {
-        showToast("RSVP confirmed! See you at the party! 🎉", "success");
+        if (attendance === "yes")
+          showToast("RSVP confirmed! See you at the party! 🎉", "success");
+        else showToast("Got it. Maybe next time! ✨", "success");
         setGuests([""]);
       } else {
         showToast("Failed to save RSVP. Please try again.", "error");
@@ -102,7 +104,7 @@ const Rsvp = () => {
                       className="hidden peer"
                       disabled={isLoading}
                     />
-                    <div className="no-confetti px-4 py-3 md:px-6 md:py-4 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 text-center font-semibold transition-all duration-300 peer-checked:bg-white/20 peer-checked:border-amber-500/60 text-sm md:text-base">
+                    <div className="no-confetti px-4 py-3 md:px-6 md:py-4 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 text-center font-semibold transition-all duration-300 peer-checked:bg-red-500/20 peer-checked:border-amber-500/60 text-sm md:text-base">
                       ✗ Sorry, can&apos;t make it
                     </div>
                   </label>
@@ -112,7 +114,7 @@ const Rsvp = () => {
               {/* Guest Names */}
               <div className="text-left">
                 <label className="block text-secondary font-semibold mb-3 md:mb-4 text-base md:text-lg px-1">
-                  {attendance === "yes" ? "Guest Name/s *" : "Your Name *"}
+                  Guest Name/s *
                 </label>
                 <div className="space-y-3">
                   {guests.map((guest, index) => (
@@ -123,14 +125,10 @@ const Rsvp = () => {
                         onChange={(e) => updateGuestName(index, e.target.value)}
                         required
                         disabled={isLoading}
-                        placeholder={
-                          attendance === "yes"
-                            ? `Guest ${index + 1} name`
-                            : "Enter your name"
-                        }
+                        placeholder={`Guest ${index + 1} name`}
                         className="flex-1 px-4 py-3 md:px-6 md:py-4 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 placeholder-amber-100/40 focus:outline-none focus:border-amber-500/60 focus:bg-white/15 transition-all duration-300 text-base md:text-lg backdrop-blur-sm"
                       />
-                      {attendance === "yes" && guests.length > 1 && (
+                      {guests.length > 1 && (
                         <button
                           type="button"
                           onClick={() => removeGuestField(index)}
@@ -144,17 +142,15 @@ const Rsvp = () => {
                   ))}
                 </div>
 
-                {attendance === "yes" && (
-                  <button
-                    type="button"
-                    onClick={addGuestField}
-                    disabled={isLoading}
-                    className="mt-4 px-4 py-2.5 md:px-6 md:py-3 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 hover:bg-white/15 hover:border-amber-500/60 transition-all duration-300 flex items-center gap-2 mx-auto font-semibold cursor-pointer text-sm md:text-base"
-                  >
-                    <Plus className="w-4 h-4 md:w-5 md:h-5" />
-                    Add Another Guest
-                  </button>
-                )}
+                <button
+                  type="button"
+                  onClick={addGuestField}
+                  disabled={isLoading}
+                  className="mt-4 px-4 py-2.5 md:px-6 md:py-3 bg-white/10 border-2 border-amber-500/30 rounded-2xl text-amber-100 hover:bg-white/15 hover:border-amber-500/60 transition-all duration-300 flex items-center gap-2 mx-auto font-semibold cursor-pointer text-sm md:text-base"
+                >
+                  <Plus className="w-4 h-4 md:w-5 md:h-5" />
+                  Add Another Guest
+                </button>
               </div>
 
               {/* Submit Button */}
@@ -162,6 +158,7 @@ const Rsvp = () => {
                 <GoldenButton
                   className="mx-auto sm:w-auto"
                   isLoading={isLoading}
+                  type="submit"
                 >
                   Confirm RSVP
                 </GoldenButton>

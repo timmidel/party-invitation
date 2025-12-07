@@ -4,7 +4,6 @@ import SectionHeading from "../ui/section_heading";
 import GoldenButton from "../ui/golden_button";
 import { Send } from "lucide-react";
 import { Toast, useToast } from "../Toast";
-import { ShootingStars } from "../ui/shadcn-io/shooting-stars";
 
 const Message = () => {
   const { toast, showToast, hideToast } = useToast();
@@ -116,7 +115,11 @@ const Message = () => {
 
               {/* Submit Button */}
               <div className="flex justify-center pt-4">
-                <GoldenButton className="mx-auto" isLoading={isLoading}>
+                <GoldenButton
+                  className="mx-auto"
+                  isLoading={isLoading}
+                  type="submit"
+                >
                   <Send className="w-5 h-5 text-primary" />
                   Send Message
                 </GoldenButton>

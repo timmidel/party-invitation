@@ -10,7 +10,7 @@ interface OpenInvitationProps {
 
 export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen overflow-y-auto w-full flex flex-col items-center justify-center relative overflow-hidden">
       {/* Background decoration elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
         <div className="absolute top-10 left-10 w-64 h-64 bg-secondary rounded-full blur-[100px]"></div>
@@ -22,14 +22,14 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
         alt="Background"
         fill
         priority
-        className="object-cover opacity-15"
+        className="object-cover opacity-15 "
       />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="z-10 flex flex-col items-center text-center space-y-4 md:space-y-6 px-6 py-8 max-w-full w-full"
+        className="shrink-h-sm shrink-h-xs z-10 flex flex-col items-center text-center space-y-4 md:space-y-6 px-6 py-8 max-w-full w-full"
       >
         <h1 className="font-script leading-[1.3] text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent tracking-wide drop-shadow-[0_2px_8px_rgba(232,165,25,0.4)] w-full h-full">
           A Victory Worth Celebrating
@@ -50,15 +50,13 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
             </div>
           </div>
         </motion.div>
-
-        <h2 className="font-script leading-[1.3] text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(232,165,25,0.5)] w-full px-2">
-          Tracey Faye Abellon, RN
-        </h2>
-
-        <GoldenButton onClick={onOpen} className="mt-4 md:mt-6">
+        <GoldenButton onClick={onOpen} className="mt-4 md:mt-6 ">
           <MailOpen className="w-4 h-4 md:w-5 md:h-5 text-primary" />
           Open Invitation
         </GoldenButton>
+        <h2 className=" shrink-h-xxs font-script leading-[1.3] text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(232,165,25,0.5)] w-full px-2">
+          Tracey Faye Abellon, RN
+        </h2>
       </motion.div>
     </div>
   );

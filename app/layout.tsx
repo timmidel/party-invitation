@@ -28,7 +28,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Tracey Faye Abellon Victory Party",
+  title: "Tracey Faye Abellon's Victory Party",
   description:
     "You're Invited to the Victory Party of Tracey Faye Abellon! Join us for a night of celebration, fun, and unforgettable memories as we honor Tracey's achievements. Save the date and RSVP now!",
 };

@@ -33,8 +33,8 @@ const Event = () => {
               God&apos;s plans. Join us as we honor this remarkable achievement!
             </p>
 
-            <div className="border-t border-amber-500/30 pt-8">
-              <p className="text-xl text-secondary italic text-center">
+            <div className="border-t border-amber-500/30 pt-5">
+              <p className="text-3xl sm:text-4xl font-script text-secondary text-center">
                 &quot;Believe that you can and you&apos;re halfway there.&quot;
               </p>
             </div>

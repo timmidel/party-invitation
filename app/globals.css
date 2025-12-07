@@ -153,3 +153,24 @@ body {
     background-position: 350% 50%, 350% 50%;
   }
 }
+
+/* Shrink UI for very short screens (≤ 700px tall) */
+@media (max-height: 700px) {
+  .shrink-h-sm {
+    @apply scale-90;
+  }
+}
+
+/* Shrink more for extremely short screens (≤ 600px) */
+@media (max-height: 600px) {
+  .shrink-h-xs {
+    @apply scale-85;
+  }
+}
+
+/* Super tiny screens (≤ 500px height) */
+@media (max-height: 500px) {
+  .shrink-h-xxs {
+    @apply scale-70;
+  }
+}

@@ -7,7 +7,7 @@ import { AuroraBackground } from "../ui/aurora-background";
 const TimeAndPlace = () => {
   const handleAddToCalendar = () => {
     const event = {
-      text: "Tracey Faye Abellon Victory Party",
+      text: "Tracey Faye Abellon's Victory Party",
       dates: "20251221T170000/20251221T230000",
       details: "Join us for Tracey's Victory Party celebration!",
       location:
