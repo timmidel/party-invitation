@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import ConfirmationModal from "@/components/ui/ConfirmationModal";
 import {
   MessageSquare,
   Users,
@@ -8,9 +9,13 @@ import {
   Calendar,
   Search,
   Filter,
+  Edit,
+  Trash2,
 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import GoldenButton from "@/components/ui/golden_button";
+import EditRsvpModal from "./EditRsvpModal";
+import { Toast, useToast } from "@/components/Toast";
 
 interface Message {
   id: string;
@@ -31,11 +36,17 @@ export default function AdminDashboard() {
   const [rsvps, setRSVPs] = useState<RSVP[]>([]);
   const [activeTab, setActiveTab] = useState<"messages" | "rsvps">("messages");
   const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [attendanceFilter, setAttendanceFilter] = useState<
     "all" | "yes" | "no"
   >("all");
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [editingRsvp, setEditingRsvp] = useState<RSVP | null>(null);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [deletingRsvpId, setDeletingRsvpId] = useState<string | null>(null);
   const router = useRouter();
+  const { toast, showToast, hideToast } = useToast();
 
   useEffect(() => {
     checkAuth();
@@ -104,6 +115,84 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleDeleteClick = (id: string) => {
+    setDeletingRsvpId(id);
+    setDeleteModalOpen(true);
+  };
+
+  const confirmDeleteRSVP = async () => {
+    if (!deletingRsvpId) return;
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/admin/rsvp", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: deletingRsvpId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete RSVP");
+      }
+
+      setRSVPs((prevRsvps) =>
+        prevRsvps.filter((rsvp) => rsvp.id !== deletingRsvpId)
+      );
+      showToast("RSVP deleted successfully!", "success");
+    } catch (error) {
+      console.error("Error deleting RSVP:", error);
+      showToast("Failed to delete RSVP.", "error");
+    } finally {
+      setIsSubmitting(false);
+      setDeleteModalOpen(false);
+      setDeletingRsvpId(null);
+    }
+  };
+
+  const handleEditClick = (rsvp: RSVP) => {
+    setEditingRsvp(rsvp);
+    setEditModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setEditingRsvp(null);
+    setEditModalOpen(false);
+  };
+
+  const handleSaveRsvp = async (updatedRsvp: RSVP) => {
+    if (!updatedRsvp) return;
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/admin/rsvp", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedRsvp),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update RSVP");
+      }
+
+      setRSVPs((prevRsvps) =>
+        prevRsvps.map((rsvp) =>
+          rsvp.id === updatedRsvp.id ? updatedRsvp : rsvp
+        )
+      );
+      showToast("RSVP updated successfully!", "success");
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error updating RSVP:", error);
+      showToast("Failed to update RSVP.", "error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   // Calculate guest counts
   const { attendingGuestsCount, notAttendingGuestsCount } = useMemo(() => {
     let attending = 0;
@@ -166,6 +255,12 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[#1a0f2e] py-8 px-4 md:px-6">
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={hideToast}
+      />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
@@ -354,10 +449,30 @@ export default function AdminDashboard() {
                             {guestList.length === 1 ? "guest" : "guests"})
                           </span>
                         </div>
-                        <span className="text-sm text-amber-100/60 flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {formatDate(rsvp.created_at)}
-                        </span>
+                        <div className="flex items-center gap-4">
+                          <span className="text-sm text-amber-100/60 flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            {formatDate(rsvp.created_at)}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => handleEditClick(rsvp)}
+                              disabled={isSubmitting}
+                              className="p-1 rounded-full hover:bg-white/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                              aria-label="Edit RSVP"
+                            >
+                              <Edit className="w-4 h-4 text-amber-300" />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteClick(rsvp.id)}
+                              disabled={isSubmitting}
+                              className="p-1 rounded-full hover:bg-white/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                              aria-label="Delete RSVP"
+                            >
+                              <Trash2 className="w-4 h-4 text-red-400" />
+                            </button>
+                          </div>
+                        </div>
                       </div>
                       <div className="text-amber-100/80">
                         <p className="font-semibold mb-1">Guests:</p>
@@ -374,6 +489,24 @@ export default function AdminDashboard() {
             </div>
           )}
         </div>
+
+        {isEditModalOpen && editingRsvp && (
+          <EditRsvpModal
+            rsvp={editingRsvp}
+            onClose={handleCloseModal}
+            onSave={handleSaveRsvp}
+            isSubmitting={isSubmitting}
+          />
+        )}
+
+        <ConfirmationModal
+          isOpen={isDeleteModalOpen}
+          onClose={() => setDeleteModalOpen(false)}
+          onConfirm={confirmDeleteRSVP}
+          title="Confirm Deletion"
+          message="Are you sure you want to delete this RSVP? This action cannot be undone."
+          isSubmitting={isSubmitting}
+        />
       </div>
     </div>
   );
