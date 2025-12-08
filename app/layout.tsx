@@ -31,6 +31,30 @@ export const metadata: Metadata = {
   title: "Tracey Faye Abellon's Victory Party",
   description:
     "You're Invited to the Victory Party of Tracey Faye Abellon! Join us for a night of celebration, fun, and unforgettable memories as we honor Tracey's achievements. Save the date and RSVP now!",
+  openGraph: {
+    title: "Tracey Faye Abellon's Victory Party",
+    description: "A special celebration honoring Tracey Faye Abellon, RN.",
+    url: "https://tracey-invitation.vercel.app/",
+    siteName: "Tracey Faye Abellon's Victory Party",
+    images: [
+      {
+        url: "https://tracey-invitation.vercel.app/images/elegant_purple_bg.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tracey Invitation Cover",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tracey Faye Abellon's Victory Party",
+    description: "A special celebration honoring Tracey Faye Abellon, RN.",
+    images: [
+      "https://tracey-invitation.vercel.app/images/elegant_purple_bg.jpg",
+    ],
+  },
 };
 
 export default function RootLayout({
