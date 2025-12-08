@@ -12,9 +12,22 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
   return (
     <div className="min-h-screen overflow-y-auto w-full flex flex-col items-center justify-center relative overflow-hidden">
       {/* Background decoration elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-secondary rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-10 right-10 w-64 h-64 bg-secondary rounded-full blur-[100px]"></div>
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30 filter">
+        <div
+          className="absolute top-10 left-10 w-64 h-64 bg-secondary rounded-full"
+          style={{
+            filter: "blur(60px)",
+            WebkitFilter: "blur(60px)",
+          }}
+        ></div>
+
+        <div
+          className="absolute bottom-10 right-10 w-64 h-64 bg-secondary rounded-full"
+          style={{
+            filter: "blur(60px)",
+            WebkitFilter: "blur(60px)",
+          }}
+        ></div>
       </div>
 
       <Image
@@ -37,7 +50,13 @@ export default function OpenInvitation({ onOpen }: OpenInvitationProps) {
 
         <motion.div whileHover={{ scale: 1.05 }} className="relative group">
           {/* Glowing effect behind image */}
-          <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 rounded-full blur-xl opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+          <div
+            className="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 rounded-full opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 animate-pulse pointer-events-none"
+            style={{
+              filter: "blur(24px)",
+              WebkitFilter: "blur(24px)",
+            }}
+          ></div>
 
           <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border-4 md:border-[6px] border-transparent bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 p-1 overflow-hidden shadow-[0_8px_32px_rgba(232,165,25,0.35)] group-hover:shadow-[0_12px_48px_rgba(232,165,25,0.5)]">
             {/* Inner white border for cleaner look */}
