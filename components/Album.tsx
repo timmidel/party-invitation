@@ -1,5 +1,4 @@
 import { DraggableCardBody } from "@/components/ui/draggable-card";
-import FadeUp from "./ui/fade_up";
 
 export function Album() {
   const items = [
@@ -61,16 +60,16 @@ export function Album() {
           key={index}
           className={
             item.className +
-            " no-confetti bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 p-4 rounded-lg shadow-[0_0_20px_rgba(232,165,25,0.4)] top-180 sm:top-140"
+            " no-confetti bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 p-4 rounded-lg shadow-[0_0_20px_rgba(232,165,25,0.4)] top-190 md:top-150 sm:top-140"
           }
         >
           <div>
             <img
               src={item.image}
               alt={item.title}
-              className="pointer-events-none relative z-10 h-60 w-50 md:h-80 md:w-70 sm:w-70 sm:w-60 object-cover rounded"
+              className="pointer-events-none relative z-10 h-50 w-50 md:h-80 md:w-70 sm:w-70 sm:w-60 object-cover rounded"
             />
-            <h3 className="mt-4 text-center text-md font-bold font-playfair text-primary">
+            <h3 className="mt-4 text-center text-sm md:text-lg font-bold font-playfair text-primary">
               {item.title}
             </h3>
           </div>

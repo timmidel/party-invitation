@@ -7,7 +7,7 @@ import { Spotlight } from "../ui/spotlight";
 const Event = () => {
   return (
     <section id="event" className="bg-background/85">
-      <DraggableCardContainer className="py-20 px-6 relative flex min-h-[1150px] sm:min-h-[1050px] w-full justify-center overflow-clip">
+      <DraggableCardContainer className="py-20 px-6 relative flex min-h-[1200px] sm:min-h-[1100px] w-full justify-center overflow-clip">
         <div className="max-w-6xl mx-auto text-center font-playfair">
           <FadeUp>
             <SectionHeading>The Event</SectionHeading>
