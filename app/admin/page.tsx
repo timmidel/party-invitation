@@ -396,23 +396,61 @@ export default function AdminDashboard() {
                   {searchQuery ? "No messages found" : "No messages yet"}
                 </p>
               ) : (
-                filteredMessages.map((msg) => (
-                  <div
-                    key={msg.id}
-                    className="bg-white/5 rounded-xl p-4 border border-amber-500/20"
-                  >
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-amber-200">
-                        {msg.name}
-                      </h4>
-                      <span className="text-sm text-amber-100/60 flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {formatDate(msg.created_at)}
-                      </span>
+                filteredMessages.map((msg) => {
+                  const isSpecial = msg.name.toLowerCase() === "tim";
+
+                  return (
+                    <div
+                      key={msg.id}
+                      className={`
+        rounded-xl p-4 border transition-all duration-300
+        ${
+          isSpecial
+            ? "bg-gradient-to-br from-yellow-400/10 via-amber-500/10 to-yellow-600/10 border-amber-400/60 shadow-[0_0_30px_rgba(232,165,25,0.6)] animate-pulse-glow relative overflow-hidden"
+            : "bg-white/5 border-amber-500/20"
+        }
+      `}
+                    >
+                      {isSpecial && (
+                        <>
+                          {/* Animated shine effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-300/20 to-transparent animate-shine"></div>
+
+                          {/* Corner sparkles */}
+                          <div className="absolute top-2 right-2 w-2 h-2 bg-amber-400 rounded-full animate-ping"></div>
+                          <div className="absolute top-3 right-4 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse"></div>
+                        </>
+                      )}
+
+                      <div className="flex justify-between items-start mb-2 relative z-10">
+                        <h4
+                          className={`font-semibold ${
+                            isSpecial
+                              ? "text-amber-300 font-bold text-lg"
+                              : "text-amber-200"
+                          }`}
+                        >
+                          {isSpecial && <span className="mr-2">❤️</span>}
+                          {msg.name}
+                          {isSpecial && <span className="ml-2">❤️</span>}
+                        </h4>
+                        <span className="text-sm text-amber-100/60 flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {formatDate(msg.created_at)}
+                        </span>
+                      </div>
+                      <p
+                        className={`relative z-10 ${
+                          isSpecial
+                            ? "text-amber-100 font-medium"
+                            : "text-amber-100/80"
+                        }`}
+                      >
+                        {msg.message}
+                      </p>
                     </div>
-                    <p className="text-amber-100/80">{msg.message}</p>
-                  </div>
-                ))
+                  );
+                })
               )}
             </div>
           ) : (
